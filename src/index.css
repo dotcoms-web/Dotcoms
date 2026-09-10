@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: 255 255 255;
+    --fg: 15 23 42;
+    --muted: 100 116 139;
+    --border: 226 232 240;
+  }
+
+  .dark {
+    --bg: 2 6 23;
+    --fg: 248 250 252;
+    --muted: 148 163 184;
+    --border: 30 41 59;
+  }
+
+  * {
+    @apply border-ink-200 dark:border-ink-800;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-ink-900 dark:bg-ink-950 dark:text-ink-50 font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-brand-500/20 text-brand-700 dark:text-brand-300;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply px-5 sm:px-8 lg:px-12 xl:px-16;
+  }
+
+  .section-py {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .glass {
+    @apply bg-white/70 dark:bg-ink-900/70 backdrop-blur-xl border border-white/20 dark:border-ink-700/50;
+  }
+
+  .glass-card {
+    @apply bg-white/60 dark:bg-ink-900/60 backdrop-blur-xl border border-ink-200/50 dark:border-ink-700/50 rounded-2xl;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-600 via-brand-500 to-accent-500 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-light {
+    @apply bg-gradient-to-r from-ink-900 to-ink-600 dark:from-white dark:to-ink-300 bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-brand-600 text-white font-semibold text-sm tracking-wide transition-all duration-300 hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-500/30 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-ink-100 dark:bg-ink-800 text-ink-900 dark:text-ink-100 font-semibold text-sm tracking-wide transition-all duration-300 hover:bg-ink-200 dark:hover:bg-ink-700 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-ink-600 dark:text-ink-300 font-medium text-sm transition-all duration-300 hover:bg-ink-100 dark:hover:bg-ink-800;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:shadow-2xl hover:shadow-brand-500/10 hover:-translate-y-1;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl bg-ink-50 dark:bg-ink-900 border border-ink-200 dark:border-ink-700 text-ink-900 dark:text-ink-50 placeholder-ink-400 dark:placeholder-ink-500 focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-transparent transition-all duration-200;
+  }
+
+  .skeleton {
+    @apply bg-gradient-to-r from-ink-100 via-ink-200 to-ink-100 dark:from-ink-800 dark:via-ink-700 dark:to-ink-800 bg-[length:1000px_100%] animate-shimmer rounded-lg;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-ink-300 dark:bg-ink-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-brand-400 dark:bg-brand-600;
+}
+
+/* Custom cursor */
+@media (hover: hover) and (pointer: fine) {
+  .cursor-none-custom {
+    cursor: none;
+  }
+}
+
+/* Loading screen */
+.loader-dot {
+  @apply inline-block w-2 h-2 rounded-full bg-brand-500 mx-1;
+  animation: bounce 1.4s ease-in-out infinite both;
+}
+.loader-dot:nth-child(1) { animation-delay: -0.32s; }
+.loader-dot:nth-child(2) { animation-delay: -0.16s; }
